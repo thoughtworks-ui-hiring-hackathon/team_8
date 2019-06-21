@@ -22,6 +22,7 @@ const HomeWrapper = (props) => {
     } = props;
 
     const [moviesCarousels, setMoviesCarousels] = useState([]);
+    console.log('HOMe', props);
 
     useEffect(() => {
         getAllLatestMovies();
