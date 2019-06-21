@@ -1,8 +1,10 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
+import { connect } from 'react-redux';
 
-const Explore = () => {
+import searchMovies from '../../actions/searchMovies';
+const ExploreWrapper = () => {
     return (
         <>
             <Row style={{ paddingTop: '50px' }} className="container">
@@ -24,4 +26,13 @@ const Explore = () => {
     )
 }
 
-export { Explore }
+
+const mapStateToProps = state => ({
+    searchMovies: state.searchMoviesReducer,
+});
+
+const mapDispatchToProps = dispatch => ({
+    searchMovies: id => dispatch(searchMovies(id)),
+})
+
+export const Explore =  connect(mapStateToProps, mapDispatchToProps)(ExploreWrapper);

@@ -1,21 +1,21 @@
 export default function (state = [], action = {}) {
     switch (action.type) {
-        case 'GENRES_PENDING':
+        case 'SEARCH_MOVIES_PENDING':
             return {
                 ...state,
                 isLoading: true,
                 error: false,
             };
 
-        case 'GENRES_FULFILLED':
+        case 'SEARCH_MOVIES_FULFILLED':
             return {
                 ...state,
                 isLoading: false,
-                data: action.payload.data.genres,
+                data: action.payload.data,
                 error: false,
             };
 
-        case 'GENRES_REJECTED':
+        case 'SEARCH_MOVIES_REJECTED':
             return {
                 ...state,
                 isLoading: false,
