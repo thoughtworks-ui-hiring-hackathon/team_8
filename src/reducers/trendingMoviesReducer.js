@@ -1,9 +1,10 @@
-import {SIMPLE_ACTION} from '../actions/simple-action'
+import {TRENDING_MOVIES} from '../actions/getTrendingMovies';
 
 export default (state = {}, action) => {
+	console.log('reducer', action, state);
 	switch (action.type) {
 
-		case SIMPLE_ACTION:
+		case TRENDING_MOVIES:
 			return {
 				result: action.payload
 			}

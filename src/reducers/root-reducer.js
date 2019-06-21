@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import simpleReducer from './simple-reducer';
+import trendingMoviesReducer from './trendingMoviesReducer';
 
 export default combineReducers({
-	simpleReducer
+	trendingMoviesReducer
 });

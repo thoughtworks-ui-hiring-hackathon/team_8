@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './scss/style.scss';
-import {simpleAction} from './actions/simple-action';
+import {getTrendingMovies} from './actions/getTrendingMovies';
 import NavBar from './components/NavBar/NavBar';
 
 
 class App extends Component {
 
-	simpleAction = event => this.props.simpleAction();
+	getTrendingMovies = event => this.props.getTrendingMovies();
 
 	render() {
 		return (
@@ -23,7 +23,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	simpleAction: () => dispatch(simpleAction())
+	getTrendingMovies: () => dispatch(getTrendingMovies())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
