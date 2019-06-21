@@ -27,7 +27,7 @@ class MovieDetailsPageWrapper extends React.PureComponent {
     }
 
     render() {
-        const { movieDetails: { title = '', overview = '', poster_path = '', vote_average = 0, credits: { crew = [], cast = [] } = {} } = {} } = this.state;
+        const { movieDetails: { title = '', overview = '', poster_path = '', vote_average = 0, credits: { cast = [] } = {} } = {} } = this.state;
         const getCast = () => {
             let casts = [];
             cast.forEach(it => casts.push(it.name));
