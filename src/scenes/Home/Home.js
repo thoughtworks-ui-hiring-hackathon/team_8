@@ -13,8 +13,12 @@ const getLMbyConstrains = (movies = []) => {
 
 }
 
-const getTrendingMovies = (movies = []) => {
-    console.log('trending', movies)
+const getTMbyConstrains = (movies = []) => {
+    return movies.reduce((acc, crr) => {
+        const { id, vote_count, vote_average, title, poster_path, genre_ids, release_date } = crr;
+        acc.push({ id, vote_count, vote_average, title, poster_path, genre_ids, release_date });
+        return acc;
+    }, [])
 }
 
 const HomeWrapper = (props) => {
@@ -30,7 +34,7 @@ const HomeWrapper = (props) => {
 
     useEffect(() => {
         const lms = getLMbyConstrains(lm.data);
-        const tms = getTrendingMovies(tm.data);
+        const tms = getTMbyConstrains(tm.data);
         getLatestMovies(lms);
         getTrendingMovies(tms)
     }, [lm, tm])

@@ -5,13 +5,12 @@ import { Stars } from '../Stars';
 
 
 const MovieCard = (props) => {
-    console.log(props)
     return (
         <>
             <Card style={{ fontSize: 'small', textAlign: 'left' }}>
-                <CardImg top 
-                style={{ maxWidth: "320px", height: "170px" }} 
-                src={` https://image.tmdb.org/t/p/w500/${props.poster_path}`} alt="Card image cap" />
+                <CardImg top
+                    style={{ maxWidth: "320px", height: "170px" }}
+                    src={` https://image.tmdb.org/t/p/w500/${props.poster_path}`} alt="Card image cap" />
                 <CardBody>
                     <b><h5><CardTitle>{props.title}</CardTitle></h5></b>
                     <CardSubtitle>{props.genre}</CardSubtitle>

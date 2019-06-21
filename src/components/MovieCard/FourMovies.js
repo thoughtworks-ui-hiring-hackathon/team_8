@@ -6,7 +6,6 @@ const FourMovies = ({ items = [] }) => {
     return (
         <Row>
             {items.map((item, i) => {
-                console.log(item);
                 return (
                     <Col key={i}>
                         <MovieCard {...item} />
