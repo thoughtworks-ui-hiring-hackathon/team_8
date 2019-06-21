@@ -29,9 +29,9 @@ class MovieDetailsPageWrapper extends React.PureComponent {
         return (
             <Container>  
                 <div className="text-center">
-                    <img 
+                    {poster_path && <img 
                         src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                        alt="movie poster"/>
+                        alt="movie poster"/>}
                 </div>
                 <Row>
                     <Col>
