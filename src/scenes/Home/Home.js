@@ -1,19 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import { MoviesCarousel } from '../../components/MoviesCarousel';
+import { MoviesCarousels } from '../../components/MoviesCarousel';
 
-const getLatestMovies = (movies) => movies.reduce((acc, crr) => {
-    //TODO function sort latest movie by date
-    return acc.push(crr);
-}, [])
+//TODO function sort latest movie by date
+const getLatestMovies = (movies) => movies.reduce((acc, crr) => acc.push(crr), []);
 
 
-const getTrendingMovies = (movies) => movies.reduce((acc, crr) => {
-    //TODO function sort Trending movie by date
-    return acc.push(crr);
-}, []);
+//TODO function sort Trending movie by date
+const getTrendingMovies = (movies) => movies.reduce((acc, crr) => acc.push(crr), []);
 
 const Home = () => {
-    const [moviesCarousels, setMoviesCarousels] = useState([]);
+    const [moviesCarousels, setMoviesCarousels] = useState([{
+        type: "Latest",
+        movies: [{
+            title: "Movie 1",
+            genre_ids: [1, 2],
+            vote_average: 4,
+            release_date: "2019-06-05",
+        }]
+    }, {
+        type: "Trending",
+        movies: [{
+            title: "Movie 1",
+            genre_ids: [1, 2],
+            vote_average: 4,
+            release_date: "2019-06-05",
+        }]
+    }
+    ]);
 
     useEffect(() => {
         const latestMovies = [{
@@ -33,10 +46,10 @@ const Home = () => {
         return () => {
             setMoviesCarousels([{
                 type: "Latest",
-                movies: getLatestMovies(latestMovies),
+                movies: latestMovies //getLatestMovies(latestMovies),
             }, {
                 type: "Trending",
-                movies: getTrendingMovies(trendingMovies),
+                movies: trendingMovies //getTrendingMovies(trendingMovies),
             }
             ]);
         };
@@ -47,7 +60,7 @@ const Home = () => {
 
     return (
         <>
-            <MoviesCarousel {...moviesCarousels} />
+            <MoviesCarousels moviesCarousels={moviesCarousels} />
         </>
     )
 }

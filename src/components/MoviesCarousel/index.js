@@ -1,1 +1,1 @@
-export { MoviesCarousel } from './MoviesCarousel';
+export { MoviesCarousels } from './MoviesCarousels';
