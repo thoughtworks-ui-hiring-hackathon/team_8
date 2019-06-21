@@ -5,11 +5,14 @@ import { MovieCard } from './MovieCard';
 const FourMovies = ({ items }) => {
     return (
         <Row>
-            {items.map((item, i) => (
-                <Col key={i}>
-                    {item && item.length && <MovieCard {...item[i]} />}
-                </Col>
-            ))}
+            {items.map((item, i) => {
+                console.log(item);
+                return (
+                    <Col key={i}>
+                        <MovieCard {...item} />
+                    </Col>
+                )
+            })}
         </Row>
     )
 }
