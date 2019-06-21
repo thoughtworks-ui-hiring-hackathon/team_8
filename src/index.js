@@ -7,11 +7,13 @@ import configureStore from './store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/_index.css';
 import App from './app';
+import {MovieDetailsPage} from './scenes/MovieDetailsPage';
 
 ReactDOM.render(
 	<Provider store={configureStore()}>
 		<Router>
-			<Route path="/" component={App}/>
+			<Route exact path="/" component={App}/>
+			<Route path="/movie/:id" component={MovieDetailsPage} />
 		</Router>
 	</Provider>,
 	document.getElementById('root')
