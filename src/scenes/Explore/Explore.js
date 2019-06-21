@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'reactstrap';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import { connect } from 'react-redux';
@@ -7,17 +7,19 @@ import searchMovies from '../../actions/searchMovies';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const ExploreWrapper = () => {
+    const [setsearchValue, setsetsearchValue] = useState('')
 
-
-    // const searchMovies = () => {}
+    const searchMovies = () => {
+        //TODO
+    }
     return (
         <>
             <Row style={{ paddingTop: '50px' }} className="container">
                 <Col sm={6}>
                     <InputGroup>
-                        <Input />
+                        <Input value={setsearchValue} onChange={(e) => setsetsearchValue(e.target.vale)} />
                         <InputGroupAddon addonType="append">
-                            <Button color="secondary">
+                            <Button color="secondary" onClick={searchMovies}>
                                 <FontAwesomeIcon icon={faSearch} />
                             </Button>
                         </InputGroupAddon>
@@ -42,4 +44,4 @@ const mapDispatchToProps = dispatch => ({
     searchMovies: id => dispatch(searchMovies(id)),
 })
 
-export const Explore =  connect(mapStateToProps, mapDispatchToProps)(ExploreWrapper);
+export const Explore = connect(mapStateToProps, mapDispatchToProps)(ExploreWrapper);
