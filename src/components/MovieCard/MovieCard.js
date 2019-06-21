@@ -9,7 +9,9 @@ const MovieCard = (props) => {
     return (
         <>
             <Card style={{ fontSize: 'small', textAlign: 'left' }}>
-                <CardImg top style={{ maxWidth: "320px", height: "170px" }} src={`https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png`} alt="Card image cap" />
+                <CardImg top 
+                style={{ maxWidth: "320px", height: "170px" }} 
+                src={` https://image.tmdb.org/t/p/w500/${props.poster_path}`} alt="Card image cap" />
                 <CardBody>
                     <b><h5><CardTitle>{props.title}</CardTitle></h5></b>
                     <CardSubtitle>{props.genre}</CardSubtitle>
