@@ -9,7 +9,7 @@ const MovieCard = (props) => {
                 <CardImg top style={{ maxWidth: "320px", height: "170px" }} src={`https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png`} alt="Card image cap" />
                 <CardBody>
                     <CardTitle>{props.title}</CardTitle>
-                    <CardSubtitle>Card subtitle</CardSubtitle>
+                    <CardSubtitle>{props.genre.join()}</CardSubtitle>
                     <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
                 </CardBody>
             </Card>

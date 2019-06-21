@@ -8,10 +8,10 @@ const selectMovies = (movies, page) => {
         : movies;
 }
 const MoviesCarousel = ({ title, movies }) => {
-    const [fourMovies, setFourMovies] = useState([])
+    const [fourMovies, setFourMovies] = useState(movies)
 
     useEffect(() => {
-        setFourMovies(selectMovies(movies, 1))
+        // setFourMovies(selectMovies(movies, 1))
     }, [movies])
 
     return (

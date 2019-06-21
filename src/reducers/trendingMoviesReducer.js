@@ -1,5 +1,4 @@
 export default function (state = [], action = {}) {
-	console.log('111111', action)
 	switch (action.type) {
 		case 'TRENDING_MOVIES_PENDING':
 			return {
