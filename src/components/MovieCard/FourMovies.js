@@ -1,11 +1,12 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { Row, Col } from 'reactstrap';
 import { MovieCard } from './MovieCard';
 
 const FourMovies = ({ items }) => {
     return (
-        <>
-            {items.map((item, i) => <Fragment key={i}><MovieCard {...item} /></Fragment>)}
-        </>
+        <Row>
+            {items.map((item, i) => <Col key={i}><MovieCard {...item} /></Col>)}
+        </Row>
     )
 }
 

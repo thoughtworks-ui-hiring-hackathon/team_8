@@ -4,6 +4,18 @@ import actionGetTrendingMovies from '../../actions/getTrendingMovies';
 import { connect } from 'react-redux'
 import { MoviesCarousels } from '../../components/MoviesCarousel';
 
+const getLMbyConstrains = (movies = []) => {
+    return movies.reduce((acc, crr) => {
+        const { vote_count, vote_average, title, poster_path, genre_ids, release_date } = crr;
+        acc.push({ vote_count, vote_average, title, poster_path, genre_ids, release_date });
+        return acc;
+    }, [])
+
+}
+
+const getTrendingMovies = (movies = []) => {
+    console.log('trending', movies)
+}
 
 //TODO function sort latest movie by date
 const getLatestMovies = (movies = []) => movies.reduce((acc = [], crr) => acc.push(crr), []);
@@ -28,18 +40,12 @@ const HomeWrapper = (props) => {
         getAllLatestMovies();
         getAllTrendingMovies();
 
-        setMoviesCarousels([{
-            type: "Latest",
-            movies: getLatestMovies(latestMovies.data),
-        }, {
-            type: "Trending",
-            movies: getTrendingMovies(trendingMovies.data),
-        }
-        ]);
-    }, [latestMovies, trendingMovies])
-
-    console.log(moviesCarousels);
-
+    useEffect(() => {
+        const lms = getLMbyConstrains(lm.data);
+        const tms = getTrendingMovies(tm.data);
+        getLatestMovies(lms);
+        getTrendingMovies(tms)
+    }, [lm, tm])
     return (
         <>
             <MoviesCarousels moviesCarousels={moviesCarousels} />
