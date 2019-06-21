@@ -4,7 +4,12 @@ import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 
 import searchMovies from '../../actions/searchMovies';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const ExploreWrapper = () => {
+
+
+    // const searchMovies = () => {}
     return (
         <>
             <Row style={{ paddingTop: '50px' }} className="container">
@@ -12,7 +17,9 @@ const ExploreWrapper = () => {
                     <InputGroup>
                         <Input />
                         <InputGroupAddon addonType="append">
-                            <Button color="secondary">To the Right!</Button>
+                            <Button color="secondary">
+                                <FontAwesomeIcon icon={faSearch} />
+                            </Button>
                         </InputGroupAddon>
                     </InputGroup>
                 </Col>
