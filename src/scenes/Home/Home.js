@@ -22,7 +22,7 @@ const getLMbyConstrains = (movies = [], geners) => {
         const { id, vote_count, vote_average, title, poster_path, genre_ids, release_date } = crr;
         acc.push({
             id, vote_count, title, poster_path, release_date,vote_average,
-            genre_ids: getGenreString(genre_ids, geners),
+            genre: getGenreString(genre_ids, geners),
         });
         return acc;
     }, [])
@@ -35,17 +35,20 @@ const getTMbyConstrains = (movies = [], geners) => {
         const { id, vote_count, vote_average, title, poster_path, genre_ids, release_date } = crr;
         acc.push({
             id, vote_count, title, poster_path, release_date,vote_average,
-            genre_ids: getGenreString(genre_ids, geners),
+            genre: getGenreString(genre_ids, geners),
         });
         return acc;
     }, [])
 }
 
-const getPMbyConstrains = (movies = []) => {
+const getPMbyConstrains = (movies = [], geners) => {
     // TODO add contraints for sorting and filtering movies
     return movies.reduce((acc, crr) => {
         const { id, vote_count, vote_average, title, poster_path, genre_ids, release_date } = crr;
-        acc.push({ id, vote_count, vote_average, title, poster_path, genre_ids, release_date });
+        acc.push({
+            id, vote_count, title, poster_path, release_date,vote_average,
+            genre: getGenreString(genre_ids, geners),
+        });
         return acc;
     }, [])
 }
