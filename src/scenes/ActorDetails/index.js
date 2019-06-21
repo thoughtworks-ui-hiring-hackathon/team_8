@@ -1,0 +1,2 @@
+export { ActorDetails } from "./ActorDetails";
+

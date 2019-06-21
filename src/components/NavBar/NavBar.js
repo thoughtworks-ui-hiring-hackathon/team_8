@@ -1,7 +1,8 @@
 import React from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
+import { Navbar, NavbarToggler, NavbarBrand, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import { Home } from '../../scenes/Home';
+import { Explore } from '../../scenes/Explore/Explore';
 
 export default class NavBar extends React.Component {
     constructor(props) {
@@ -24,38 +25,33 @@ export default class NavBar extends React.Component {
         const { activeTab } = this.state;
         return (
             <div>
-                <Nav tabs>
-                    <NavItem>
-                        <NavLink
-                            className={classnames({ active: activeTab === '1' })}
-                            onClick={() => { this.toggle('1'); }}
-                        >
-                            Home
+                <Navbar color="dark" light expand="md">
+                    <NavbarBrand href="/">MovieApp</NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Nav tabs>
+                        <NavItem>
+                            <NavLink
+                                className={classnames({ active: activeTab === '1' })}
+                                onClick={() => { this.toggle('1'); }}>
+                                Home
                     </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink
-                            className={classnames({ active: activeTab === '2' })}
-                            onClick={() => { this.toggle('2'); }}
-                        >
-                            Explore
+                        </NavItem>
+                        <NavItem>
+                            <NavLink
+                                className={classnames({ active: activeTab === '2' })}
+                                onClick={() => { this.toggle('2'); }}
+                            >
+                                Explore
             </NavLink>
-                    </NavItem>
-                </Nav>
+                        </NavItem>
+                    </Nav>
+                </Navbar>
                 <TabContent activeTab={activeTab}>
                     <TabPane tabId="1">
-                        <Row>
-                            <Col sm="12">
-                                <Home />
-                            </Col>
-                        </Row>
+                        <Home />
                     </TabPane>
                     <TabPane tabId="2">
-                        <Row>
-                            <Col sm="12">
-
-                            </Col>
-                        </Row>
+                        <Explore />
                     </TabPane>
                 </TabContent>
             </div>
