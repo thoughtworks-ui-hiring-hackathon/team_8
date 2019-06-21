@@ -21,12 +21,13 @@ export default class NavBar extends React.Component {
         }
     }
     render() {
+        const { activeTab } = this.state;
         return (
             <div>
                 <Nav tabs>
                     <NavItem>
                         <NavLink
-                            className={classnames({ active: this.state.activeTab === '1' })}
+                            className={classnames({ active: activeTab === '1' })}
                             onClick={() => { this.toggle('1'); }}
                         >
                             Home
@@ -34,14 +35,14 @@ export default class NavBar extends React.Component {
                     </NavItem>
                     <NavItem>
                         <NavLink
-                            className={classnames({ active: this.state.activeTab === '2' })}
+                            className={classnames({ active: activeTab === '2' })}
                             onClick={() => { this.toggle('2'); }}
                         >
                             Explore
             </NavLink>
                     </NavItem>
                 </Nav>
-                <TabContent activeTab={this.state.activeTab}>
+                <TabContent activeTab={activeTab}>
                     <TabPane tabId="1">
                         <Row>
                             <Col sm="12">

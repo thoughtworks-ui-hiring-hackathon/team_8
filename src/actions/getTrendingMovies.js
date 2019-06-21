@@ -1,9 +1,10 @@
-export const TRENDING_MOVIES = 'TRENDING_MOVIES'
+import api from './api';
+import { API_KEY } from '../config';
+export const TRENDING_MOVIES = 'TRENDING_MOVIES';
 
-export const getTrendingMovies = (data) => dispatch => {
-	console.log('213213123', data);
-	return dispatch({
-		type: TRENDING_MOVIES,
-		// payload: 
-	})
-}
+const getTrendingMovies = () => ({
+	type: TRENDING_MOVIES,
+	payload: api.get(`trending/movie/week?api_key=${API_KEY}`),
+});
+
+export default getTrendingMovies;
