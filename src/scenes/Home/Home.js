@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import actionGetLatestMovies from '../../actions/getLatestMovies';
 import actionGetTrendingMovies from '../../actions/getTrendingMovies';
 import { connect } from 'react-redux'
-import { MoviesCarousels } from '../../components/MoviesCarousel';
+import { MoviesCarousel } from '../../components/MoviesCarousel';
 
 const getLMbyConstrains = (movies = []) => {
     return movies.reduce((acc, crr) => {
@@ -13,48 +13,40 @@ const getLMbyConstrains = (movies = []) => {
 
 }
 
-const getTrendingMovies = (movies = []) => {
-    console.log('trending', movies)
+const getTMbyConstrains = (movies = []) => {
+    return movies.reduce((acc, crr) => {
+        const { id, vote_count, vote_average, title, poster_path, genre_ids, release_date } = crr;
+        acc.push({ id, vote_count, vote_average, title, poster_path, genre_ids, release_date });
+        return acc;
+    }, [])
 }
 
-//TODO function sort latest movie by date
-const getLatestMovies = (movies = []) => movies.reduce((acc = [], crr) => acc.push(crr), []);
-
-const getTrendingMovies = (movies = []) => movies.reduce((acc = [], crr) => {
-    //TODO function sort Trending movie by date
-    return acc.push(crr);
-}, []);
-
 const HomeWrapper = (props) => {
-    const {
-        getAllTrendingMovies,
-        getAllLatestMovies,
-        trendingMovies,
-        latestMovies,
-    } = props;
+    const { getAllLatestMovies, getAllTrendingMovies, trendingMovies: tm, latestMovies: lm } = props;
 
-    const [moviesCarousels, setMoviesCarousels] = useState([]);
-    console.log('HOMe', props);
+    const [latestMovies, getLatestMovies] = useState([]);
+    const [trendingMovies, getTrendingMovies] = useState([]);
 
     useEffect(() => {
         getAllLatestMovies();
         getAllTrendingMovies();
+    }, [getAllLatestMovies, getAllTrendingMovies])
 
     useEffect(() => {
         const lms = getLMbyConstrains(lm.data);
-        const tms = getTrendingMovies(tm.data);
+        const tms = getTMbyConstrains(tm.data);
         getLatestMovies(lms);
         getTrendingMovies(tms)
     }, [lm, tm])
     return (
         <>
-            <MoviesCarousels moviesCarousels={moviesCarousels} />
+            <MoviesCarousel type="Latest" movies={latestMovies} />
+            <MoviesCarousel type="Trending" movies={trendingMovies} />
         </>
     )
 }
 
 const mapStateToProps = state => {
-    console.log('home', state);
     return ({
         trendingMovies: state.trendingMoviesReducer,
         latestMovies: state.latestMoviesReducer,
