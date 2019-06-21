@@ -17,7 +17,10 @@ const ExploreWrapper = () => {
             <Row style={{ paddingTop: '50px' }} className="container">
                 <Col sm={6}>
                     <InputGroup>
-                        <Input value={setsearchValue} onChange={(e) => setsetsearchValue(e.target.vale)} />
+                        <Input 
+                            value={setsearchValue} 
+                            onChange={(e) => setsetsearchValue(e.target.vale)}
+                            placeholder="Search for movies, actor, genre" />
                         <InputGroupAddon addonType="append">
                             <Button color="secondary" onClick={searchMovies}>
                                 <FontAwesomeIcon icon={faSearch} />
