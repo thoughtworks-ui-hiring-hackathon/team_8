@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 
 import actionGetMovieDetails from '../../actions/getMovieDetails';
+import {Stars} from '../../components/Stars';
 import './style.scss';
 
 class MovieDetailsPageWrapper extends React.PureComponent {
@@ -26,7 +27,12 @@ class MovieDetailsPageWrapper extends React.PureComponent {
     }
 
     render() {
-        const { movieDetails: { title = '', overview = '', poster_path = '' } = {} } = this.state;
+        const { movieDetails: { title = '', overview = '', poster_path = '', vote_average = 0, credits: { crew = [], cast = [] } = {} } = {} } = this.state;
+        const getCast = () => {
+            let casts = [];
+            cast.forEach(it => casts.push(it.name));
+            return casts.join(', ');
+        }
         return (
             <Container>  
                 <div className="text-center">
@@ -39,7 +45,22 @@ class MovieDetailsPageWrapper extends React.PureComponent {
                     </Col>
 
                     <Col className="movie_describe">
-
+                        <Row>
+                            <Col><strong>Genre</strong></Col>
+                            <Col></Col>
+                        </Row>
+                        <Row>
+                            <Col><strong>Cast</strong></Col>
+                            <Col>{getCast()}</Col>
+                        </Row>
+                        <Row>
+                            <Col><strong>Director</strong></Col>
+                            <Col></Col>
+                        </Row>
+                        <Row>
+                            <Col><strong>MovieRating</strong></Col>
+                            <Col><Stars stars={vote_average} /></Col>
+                        </Row>
                     </Col>
                 </Row>
             </Container>
