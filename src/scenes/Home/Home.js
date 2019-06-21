@@ -5,20 +5,16 @@ import { MoviesCarousels } from '../../components/MoviesCarousel';
 
 
 //TODO function sort latest movie by date
-const getLatestMovies = (movies) => movies.reduce((acc, crr) => acc.push(crr), []);
+const getLatestMovies = (movies = []) => movies.reduce((acc, crr) => acc.push(crr), []);
 
-const getTrendingMovies = (movies) => movies.reduce((acc, crr) => {
-    //TODO function sort Trending movie by date
-    return acc.push(crr);
-}, []);
+//TODO function sort Trending movie by date
+const getTrendingMovies = (movies = []) => movies.reduce((acc, crr) => acc.push(crr), []);
 
 const HomeWrapper = (props) => {
-    const {
-        getAllTrendingMovies,
-        trendingMovies,
-    } = props;
-    console.log('HOMe', props);
+    const { getAllTrendingMovies, trendingMovies } = props;
+
     const [moviesCarousels, setMoviesCarousels] = useState([]);
+    console.log('HOMe', props);
 
     useEffect(() => {
         getAllTrendingMovies();
@@ -37,16 +33,14 @@ const HomeWrapper = (props) => {
             release_date: "2019-06-05",
         }]; //TODO API get all trending movies
 
-        return () => {
-            setMoviesCarousels([{
-                type: "Latest",
-                movies: latestMovies //getLatestMovies(latestMovies),
-            }, {
-                type: "Trending",
-                movies: getTrendingMovies(trendingMovies.data),
-            }
-            ]);
-        };
+        setMoviesCarousels([{
+            type: "Latest",
+            movies: latestMovies //getLatestMovies(latestMovies),
+        }, {
+            type: "Trending",
+            movies: getTrendingMovies(trendingMovies.data),
+        }
+        ]);
     }, [])
 
     return (
