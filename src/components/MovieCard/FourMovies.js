@@ -7,7 +7,7 @@ const FourMovies = ({ items = [] }) => {
         <Row>
             {items.map((item, i) => (
                 <Col key={i}>
-                    <MovieCard {...item[i]} />
+                    {item && item.length && <MovieCard {...item[i]} />}
                 </Col>
             ))}
         </Row>
