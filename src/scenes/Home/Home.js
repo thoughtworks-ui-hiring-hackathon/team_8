@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-
+import React, { useState, useEffect } from 'react'
 import actionGetTrendingMovies from '../../actions/getTrendingMovies';
-import actionGetLatestMovies from '../../actions/getLatestMovies';
-import { MoviesCarousel } from '../../components/MoviesCarousel';
+import { connect } from 'react-redux'
+import { MoviesCarousels } from '../../components/MoviesCarousel';
 
-const getLatestMovies = (movies = []) => {
-    console.log('movies', movies);
-    return movies.reduce((acc, crr) => {
-        //TODO function sort latest movie by date
-        return acc.push(crr);
-    }, [])
-}
+
+//TODO function sort latest movie by date
+const getLatestMovies = (movies) => movies.reduce((acc, crr) => acc.push(crr), []);
 
 const getTrendingMovies = (movies = []) => movies.reduce((acc, crr) => {
     //TODO function sort Trending movie by date
@@ -46,7 +40,7 @@ const HomeWrapper = (props) => {
 
     return (
         <>
-            <MoviesCarousel {...moviesCarousels} />
+            <MoviesCarousels moviesCarousels={moviesCarousels} />
         </>
     )
 }
