@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './scss/style.scss';
 import {simpleAction} from './actions/simple-action';
+import NavBar from './components/NavBar/NavBar';
 
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				
+				<NavBar />
 			</div>
 		);
 	}
