@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Row, Col } from 'reactstrap';
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap';
 import { FourMovies } from '../MovieCard';
 
