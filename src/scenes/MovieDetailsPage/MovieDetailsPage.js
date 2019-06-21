@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 
 import actionGetMovieDetails from '../../actions/getMovieDetails';
+import './style.scss';
 
 class MovieDetailsPageWrapper extends React.PureComponent {
     constructor(props) {
@@ -31,7 +32,7 @@ class MovieDetailsPageWrapper extends React.PureComponent {
                 <div className="text-center">
                     <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}/>
                 </div>
-                <Row>
+                <Row className="movie_details">
                     <Col>
                         <h1>{title}</h1>
                         <p>{overview}</p>
