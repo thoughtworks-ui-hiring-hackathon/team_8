@@ -6,8 +6,8 @@ import { MoviesCarousels } from '../../components/MoviesCarousel';
 
 const getLMbyConstrains = (movies = []) => {
     return movies.reduce((acc, crr) => {
-        const { vote_count, vote_average, title, poster_path, genre_ids, release_date } = crr;
-        acc.push({ vote_count, vote_average, title, poster_path, genre_ids, release_date });
+        const { id, vote_count, vote_average, title, poster_path, genre_ids, release_date } = crr;
+        acc.push({ id, vote_count, vote_average, title, poster_path, genre_ids, release_date });
         return acc;
     }, [])
 
